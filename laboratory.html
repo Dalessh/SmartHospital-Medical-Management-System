@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Services - SmartHospital</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body data-theme="light">
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-pulse"></div>
+            <div class="loader-text">SmartHospital</div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hospital-alt"></i>
+                <span>SmartHospital</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="departments.html" class="nav-link">Departments</a></li>
+                <li><a href="doctors.html" class="nav-link">Doctors</a></li>
+                <li><a href="laboratory.html" class="nav-link active">Laboratory</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Laboratory Services</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Advanced diagnostic testing with accurate and rapid results</p>
+        </div>
+    </section>
+
+    <section class="lab-content section-padding">
+        <div class="container">
+            <!-- Lab Stats -->
+            <div class="stats-cards" data-aos="fade-up">
+                <div class="stat-card-dashboard">
+                    <div class="stat-icon bg-green"><i class="fas fa-flask"></i></div>
+                    <div class="stat-info">
+                        <h3>200+</h3>
+                        <p>Test Types Available</p>
+                    </div>
+                </div>
+                <div class="stat-card-dashboard">
+                    <div class="stat-icon bg-blue"><i class="fas fa-clock"></i></div>
+                    <div class="stat-info">
+                        <h3>24hr</h3>
+                        <p>Result Turnaround</p>
+                    </div>
+                </div>
+                <div class="stat-card-dashboard">
+                    <div class="stat-icon bg-purple"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-info">
+                        <h3>99.9%</h3>
+                        <p>Accuracy Rate</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Available Tests -->
+            <div class="mt-4" data-aos="fade-up">
+                <h2>Available Laboratory Tests</h2>
+                <div class="search-bar">
+                    <input type="text" id="labSearch" class="form-control" placeholder="Search tests by name or category...">
+                </div>
+                
+                <div class="lab-tests-grid" id="labTestsGrid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Test Results Lookup -->
+            <div class="results-lookup mt-4" data-aos="fade-up">
+                <div class="glass-card">
+                    <h3><i class="fas fa-search"></i> Look Up Test Results</h3>
+                    <p>Enter your patient ID to view your laboratory test results.</p>
+                    <form id="resultsLookupForm" class="form-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter Patient ID (e.g., PAT001)" required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </form>
+                    <div id="resultsDisplay" class="mt-4" style="display: none;">
+                        <!-- Dynamic results -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-hospital-alt"></i> SmartHospital</h3>
+                    <p>Advanced healthcare with compassion since 2010.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="appointments.html">Book Appointment</a></li>
+                        <li><a href="doctors.html">Find a Doctor</a></li>
+                        <li><a href="emergency.html">Emergency</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency: 911</li>
+                        <li><i class="fas fa-phone-alt"></i> Main: (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartHospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Render laboratory tests
+        function renderLabTests(filter = '') {
+            const container = document.getElementById('labTestsGrid');
+            if (!container || !window.HospitalData) return;
+            
+            let tests = HospitalData.labTests;
+            
+            if (filter) {
+                tests = tests.filter(t => 
+                    t.name.toLowerCase().includes(filter) ||
+                    t.category.toLowerCase().includes(filter)
+                );
+            }
+            
+            container.innerHTML = tests.map(test => `
+                <div class="lab-test-card glass-card">
+                    <div class="test-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>${test.name}</h3>
+                    <p class="test-category"><span class="badge">${test.category}</span></p>
+                    <div class="test-details">
+                        <p><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> $${test.price.toFixed(2)}</p>
+                        <p><i class="fas fa-clock"></i> <strong>Duration:</strong> ${test.duration}</p>
+                        <p><i class="fas fa-clipboard-list"></i> <strong>Preparation:</strong> ${test.preparation}</p>
+                    </div>
+                    <button class="btn btn-primary btn-sm btn-block" onclick="bookTest('${test.name}')">
+                        <i class="fas fa-calendar-plus"></i> Book This Test
+                    </button>
+                </div>
+            `).join('');
+        }
+        
+        function bookTest(testName) {
+            SmartHospital.showNotification(`Test "${testName}" booked successfully! Visit the lab department.`, 'success');
+        }
+        
+        // Event Listener: Search
+        document.getElementById('labSearch').addEventListener('input', function(e) {
+            renderLabTests(e.target.value.toLowerCase());
+        });
+        
+        // Results lookup
+        document.getElementById('resultsLookupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const patientId = this.querySelector('input').value.trim().toUpperCase();
+            const display = document.getElementById('resultsDisplay');
+            
+            // Simulate finding patient
+            const patient = HospitalData.patients.find(p => p.id === patientId);
+            
+            if (patient) {
+                display.style.display = 'block';
+                display.innerHTML = `
+                    <div class="glass-card">
+                        <h4><i class="fas fa-user"></i> Patient: ${patient.name} (${patient.id})</h4>
+                        <table class="data-table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Test Name</th>
+                                    <th>Date</th>
+                                    <th>Result</th>
+                                    <th>Normal Range</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Complete Blood Count</td>
+                                    <td>2024-03-10</td>
+                                    <td>Normal</td>
+                                    <td>4.5-11.0 K/µL</td>
+                                    <td><span class="appointment-status status-confirmed">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Lipid Profile</td>
+                                    <td>2024-03-10</td>
+                                    <td>Borderline</td>
+                                    <td>&lt;200 mg/dL</td>
+                                    <td><span class="appointment-status status-pending">Review</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } else {
+                display.style.display = 'block';
+                display.innerHTML = `
+                    <div class="glass-card text-center">
+                        <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--warning-color);"></i>
+                        <p class="mt-4">No results found for Patient ID: ${patientId}</p>
+                    </div>
+                `;
+            }
+        });
+        
+        // Initial render
+        renderLabTests();
+    </script>
+    
+    <style>
+        .lab-tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .lab-test-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        .test-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+        .test-category .badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .test-details {
+            text-align: left;
+            margin: 1rem 0;
+        }
+        .test-details p {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        .test-details p i {
+            color: var(--secondary-color);
+            width: 25px;
+        }
+        .results-lookup .glass-card {
+            padding: 2rem;
+        }
+        .form-inline .input-group {
+            display: flex;
+            gap: 1rem;
+        }
+        @media (max-width: 768px) {
+            .form-inline .input-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

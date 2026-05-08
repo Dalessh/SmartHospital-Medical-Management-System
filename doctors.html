@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal - SmartHospital</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body data-theme="light">
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-pulse"></div>
+            <div class="loader-text">SmartHospital</div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hospital-alt"></i>
+                <span>SmartHospital</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="departments.html" class="nav-link">Departments</a></li>
+                <li><a href="doctors.html" class="nav-link">Doctors</a></li>
+                <li><a href="patients.html" class="nav-link active">Patients</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <button class="emergency-btn" onclick="window.location.href='emergency.html'">
+                    <i class="fas fa-ambulance"></i> Emergency
+                </button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Patient Portal</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Access your medical records and manage your healthcare</p>
+        </div>
+    </section>
+
+    <section class="patient-services section-padding">
+        <div class="container">
+            <div class="patient-quick-actions" data-aos="fade-up">
+                <div class="action-card glass-card">
+                    <i class="fas fa-calendar-plus"></i>
+                    <h3>Book Appointment</h3>
+                    <p>Schedule a visit with our specialists</p>
+                    <a href="appointments.html" class="btn btn-primary btn-sm">Book Now</a>
+                </div>
+                <div class="action-card glass-card">
+                    <i class="fas fa-file-medical-alt"></i>
+                    <h3>Medical Records</h3>
+                    <p>View your medical history and reports</p>
+                    <a href="laboratory.html" class="btn btn-primary btn-sm">View Records</a>
+                </div>
+                <div class="action-card glass-card">
+                    <i class="fas fa-prescription"></i>
+                    <h3>Prescriptions</h3>
+                    <p>Manage your medications and refills</p>
+                    <a href="pharmacy.html" class="btn btn-primary btn-sm">View Prescriptions</a>
+                </div>
+                <div class="action-card glass-card">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Billing</h3>
+                    <p>View and pay your medical bills</p>
+                    <a href="billing.html" class="btn btn-primary btn-sm">View Bills</a>
+                </div>
+            </div>
+            
+            <div class="patient-records mt-4" data-aos="fade-up">
+                <h2>Patient Records</h2>
+                <div class="search-bar">
+                    <input type="text" id="patientSearch" class="form-control" placeholder="Search patients by name, ID, or condition...">
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="data-table" id="patientsTable">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Blood Group</th>
+                                <th>Condition</th>
+                                <th>Doctor</th>
+                                <th>Room</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientsTableBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Patient Registration Modal -->
+            <div class="modal" id="patientModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Patient Details</h3>
+                        <button class="modal-close" onclick="closeModal('patientModal')">&times;</button>
+                    </div>
+                    <div class="modal-body" id="patientModalBody">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-hospital-alt"></i> SmartHospital</h3>
+                    <p>Advanced healthcare with compassion since 2010.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="appointments.html">Book Appointment</a></li>
+                        <li><a href="doctors.html">Find a Doctor</a></li>
+                        <li><a href="emergency.html">Emergency</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency: 911</li>
+                        <li><i class="fas fa-phone-alt"></i> Main: (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartHospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // DOM Manipulation: Render patients table
+        function renderPatientsTable(filter = '') {
+            const tbody = document.getElementById('patientsTableBody');
+            if (!tbody || !window.HospitalData) return;
+            
+            let patients = HospitalData.patients;
+            
+            if (filter) {
+                patients = patients.filter(p => 
+                    p.name.toLowerCase().includes(filter) ||
+                    p.id.toLowerCase().includes(filter) ||
+                    p.condition.toLowerCase().includes(filter) ||
+                    p.doctor.toLowerCase().includes(filter)
+                );
+            }
+            
+            tbody.innerHTML = patients.map(patient => `
+                <tr>
+                    <td><strong>${patient.id}</strong></td>
+                    <td>${patient.name}</td>
+                    <td>${patient.age}</td>
+                    <td>${patient.gender}</td>
+                    <td><span class="blood-group">${patient.bloodGroup}</span></td>
+                    <td>${patient.condition}</td>
+                    <td>${patient.doctor}</td>
+                    <td>Room ${patient.room}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline" onclick="viewPatient('${patient.id}')">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // View patient details
+        function viewPatient(patientId) {
+            const patient = HospitalData.patients.find(p => p.id === patientId);
+            if (patient) {
+                const modalBody = document.getElementById('patientModalBody');
+                modalBody.innerHTML = `
+                    <div class="patient-detail">
+                        <h4>${patient.name}</h4>
+                        <div class="detail-grid">
+                            <div><strong>Patient ID:</strong> ${patient.id}</div>
+                            <div><strong>Age:</strong> ${patient.age}</div>
+                            <div><strong>Gender:</strong> ${patient.gender}</div>
+                            <div><strong>Blood Group:</strong> ${patient.bloodGroup}</div>
+                            <div><strong>Condition:</strong> ${patient.condition}</div>
+                            <div><strong>Doctor:</strong> ${patient.doctor}</div>
+                            <div><strong>Admit Date:</strong> ${patient.admitDate}</div>
+                            <div><strong>Room:</strong> ${patient.room}</div>
+                        </div>
+                    </div>
+                `;
+                openModal('patientModal');
+            }
+        }
+        
+        // Event Listener: Search functionality
+        document.getElementById('patientSearch').addEventListener('input', function(e) {
+            renderPatientsTable(e.target.value.toLowerCase());
+        });
+        
+        // Initial render
+        renderPatientsTable();
+    </script>
+    
+    <style>
+        .patient-quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .action-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        .action-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        .action-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .action-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .blood-group {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .patient-detail {
+            padding: 1rem;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

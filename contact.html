@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SmartHospital</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body data-theme="light">
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-pulse"></div>
+            <div class="loader-text">SmartHospital</div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hospital-alt"></i>
+                <span>SmartHospital</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="departments.html" class="nav-link">Departments</a></li>
+                <li><a href="doctors.html" class="nav-link">Doctors</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Contact Us</h1>
+            <p data-aos="fade-up" data-aos-delay="200">We're here to help. Reach out to us anytime.</p>
+        </div>
+    </section>
+
+    <section class="contact-section section-padding">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper glass-card" data-aos="fade-right">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" class="form-control" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">Select a subject</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Appointment">Appointment</option>
+                                <option value="Billing">Billing Question</option>
+                                <option value="Medical Records">Medical Records</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Complaint">Complaint</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" rows="5" required placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="contact-info" data-aos="fade-left">
+                    <div class="info-card glass-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
+                        <p>123 Medical Center Drive<br>Healthcare District<br>New York, NY 10001</p>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <h3><i class="fas fa-phone"></i> Phone Numbers</h3>
+                        <ul>
+                            <li><strong>Emergency:</strong> 911</li>
+                            <li><strong>Main Line:</strong> (555) 123-4567</li>
+                            <li><strong>Appointments:</strong> (555) 123-4568</li>
+                            <li><strong>Billing:</strong> (555) 123-4569</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <h3><i class="fas fa-clock"></i> Hours of Operation</h3>
+                        <ul>
+                            <li><strong>Emergency Room:</strong> 24/7</li>
+                            <li><strong>Outpatient:</strong> Mon-Fri: 8AM-8PM</li>
+                            <li><strong>Pharmacy:</strong> Daily: 8AM-10PM</li>
+                            <li><strong>Lab:</strong> Mon-Sat: 7AM-7PM</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <ul>
+                            <li>info@smarthospital.com</li>
+                            <li>appointments@smarthospital.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-hospital-alt"></i> SmartHospital</h3>
+                    <p>Advanced healthcare with compassion since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="appointments.html">Book Appointment</a></li>
+                        <li><a href="doctors.html">Find a Doctor</a></li>
+                        <li><a href="emergency.html">Emergency</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Emergency</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Call 911</li>
+                        <li><i class="fas fa-phone-alt"></i> ER: (555) 999-8888</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartHospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Contact form handling is in main.js (already initialized)
+    </script>
+    
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        .contact-form-wrapper {
+            padding: 2rem;
+        }
+        .contact-info .info-card {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-info .info-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .contact-info .info-card ul {
+            list-style: none;
+        }
+        .contact-info .info-card ul li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

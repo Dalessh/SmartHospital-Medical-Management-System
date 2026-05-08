@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - SmartHospital</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body data-theme="light">
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-pulse"></div>
+            <div class="loader-text">SmartHospital</div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hospital-alt"></i>
+                <span>SmartHospital</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="departments.html" class="nav-link active">Departments</a></li>
+                <li><a href="doctors.html" class="nav-link">Doctors</a></li>
+                <li><a href="appointments.html" class="nav-link">Appointments</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Medical Departments</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Comprehensive healthcare across specialized departments</p>
+        </div>
+    </section>
+
+    <section class="departments-full section-padding">
+        <div class="container">
+            <div class="search-bar" data-aos="fade-up">
+                <input type="text" id="deptSearch" class="form-control" placeholder="Search departments...">
+            </div>
+            
+            <div class="departments-grid-full" id="departmentsFullList" data-aos="fade-up">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-hospital-alt"></i> SmartHospital</h3>
+                    <p>Advanced healthcare with compassion since 2010.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="appointments.html">Book Appointment</a></li>
+                        <li><a href="doctors.html">Find a Doctor</a></li>
+                        <li><a href="emergency.html">Emergency</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency: 911</li>
+                        <li><i class="fas fa-phone-alt"></i> Main: (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartHospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        function renderAllDepartments(filter = '') {
+            const container = document.getElementById('departmentsFullList');
+            if (!container || !window.HospitalData) return;
+            
+            let departments = HospitalData.departments;
+            
+            if (filter) {
+                departments = departments.filter(d => 
+                    d.name.toLowerCase().includes(filter) ||
+                    d.head.toLowerCase().includes(filter)
+                );
+            }
+            
+            container.innerHTML = departments.map(dept => `
+                <div class="department-full-card glass-card">
+                    <div class="dept-header">
+                        <div class="dept-icon-large">
+                            <i class="fas ${dept.icon}"></i>
+                        </div>
+                        <div>
+                            <h3>${dept.name}</h3>
+                            <p class="dept-head">Head: ${dept.head}</p>
+                        </div>
+                    </div>
+                    <p class="dept-description">${dept.description}</p>
+                    <div class="dept-stats-full">
+                        <div class="dept-stat">
+                            <i class="fas fa-procedures"></i>
+                            <span>${dept.beds} Beds</span>
+                        </div>
+                        <div class="dept-stat">
+                            <i class="fas fa-user-md"></i>
+                            <span>${dept.doctors} Doctors</span>
+                        </div>
+                        <div class="dept-stat">
+                            <i class="fas fa-users"></i>
+                            <span>${dept.patients} Patients</span>
+                        </div>
+                    </div>
+                    <a href="appointments.html" class="btn btn-primary btn-sm">Book Appointment</a>
+                </div>
+            `).join('');
+        }
+        
+        document.getElementById('deptSearch').addEventListener('input', function(e) {
+            renderAllDepartments(e.target.value.toLowerCase());
+        });
+        
+        renderAllDepartments();
+    </script>
+    
+    <style>
+        .departments-grid-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .department-full-card {
+            padding: 2rem;
+        }
+        .dept-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .dept-icon-large {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        .dept-head {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        .dept-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .dept-stats-full {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .dept-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        .dept-stat i {
+            color: var(--secondary-color);
+        }
+    </style>
+</body>
+</html>

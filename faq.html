@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - SmartHospital</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body data-theme="light">
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-pulse"></div>
+            <div class="loader-text">SmartHospital</div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hospital-alt"></i>
+                <span>SmartHospital</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="departments.html" class="nav-link">Departments</a></li>
+                <li><a href="doctors.html" class="nav-link">Doctors</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Frequently Asked Questions</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Find answers to common questions about our services</p>
+        </div>
+    </section>
+
+    <section class="faq-section section-padding">
+        <div class="container">
+            <!-- FAQ Categories -->
+            <div class="faq-categories" data-aos="fade-up">
+                <button class="faq-category-btn active" data-category="all">All</button>
+                <button class="faq-category-btn" data-category="appointments">Appointments</button>
+                <button class="faq-category-btn" data-category="billing">Billing & Insurance</button>
+                <button class="faq-category-btn" data-category="services">Services</button>
+                <button class="faq-category-btn" data-category="visitors">Visitors</button>
+            </div>
+            
+            <!-- Accordion FAQ -->
+            <div class="faq-accordion" data-aos="fade-up">
+                <div class="accordion-item" data-category="appointments">
+                    <div class="accordion-header">
+                        <span>How do I book an appointment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>You can book an appointment through our online booking system, by calling our appointment line at (555) 123-4568, or by visiting our hospital in person. Online booking is available 24/7 for your convenience.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="appointments">
+                    <div class="accordion-header">
+                        <span>Can I cancel or reschedule my appointment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, you can cancel or reschedule your appointment up to 24 hours before the scheduled time without any charge. You can do this online through your patient portal or by calling our office.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="billing">
+                    <div class="accordion-header">
+                        <span>What insurance plans do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We accept most major insurance plans including Medicare, Medicaid, Blue Cross Blue Shield, Aetna, Cigna, UnitedHealthcare, and many more. Please contact our billing department to verify your specific plan.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="billing">
+                    <div class="accordion-header">
+                        <span>How can I pay my medical bills?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>You can pay your bills online through our patient portal, by mail, over the phone, or in person at our billing office. We accept credit cards, debit cards, checks, and electronic bank transfers.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="services">
+                    <div class="accordion-header">
+                        <span>What services does your emergency department provide?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our emergency department is open 24/7 and provides comprehensive emergency care including trauma care, cardiac emergencies, stroke treatment, pediatric emergencies, and all other urgent medical conditions.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="services">
+                    <div class="accordion-header">
+                        <span>Do you offer telemedicine services?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, we offer telemedicine consultations for many specialties. You can schedule a virtual appointment through our online portal or by calling our office. This is especially useful for follow-up visits and minor consultations.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="visitors">
+                    <div class="accordion-header">
+                        <span>What are the visiting hours?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>General visiting hours are from 10:00 AM to 8:00 PM daily. However, visiting hours may vary by department. ICU and special care units may have restricted visiting hours. Please check with the specific department.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="visitors">
+                    <div class="accordion-header">
+                        <span>Is parking available at the hospital?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, we have a multi-level parking garage available for patients and visitors. Parking is free for the first 2 hours, after which standard rates apply. Valet parking is also available at the main entrance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-hospital-alt"></i> SmartHospital</h3>
+                    <p>Advanced healthcare with compassion since 2010.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="appointments.html">Book Appointment</a></li>
+                        <li><a href="doctors.html">Find a Doctor</a></li>
+                        <li><a href="emergency.html">Emergency</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency: 911</li>
+                        <li><i class="fas fa-phone-alt"></i> Main: (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartHospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Open clicked item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // FAQ Category filter
+        document.querySelectorAll('.faq-category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.faq-category-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                const items = document.querySelectorAll('.accordion-item');
+                
+                items.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <style>
+        .faq-categories {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .faq-category-btn {
+            padding: 0.6rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .faq-category-btn.active,
+        .faq-category-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</body>
+</html>

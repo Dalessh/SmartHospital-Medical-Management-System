@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Services - SmartHospital</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body data-theme="light">
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-pulse" style="border-top-color: #e53935;"></div>
+            <div class="loader-text">Emergency Services</div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hospital-alt"></i>
+                <span>SmartHospital</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="departments.html" class="nav-link">Departments</a></li>
+                <li><a href="doctors.html" class="nav-link">Doctors</a></li>
+                <li><a href="emergency.html" class="nav-link active">Emergency</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="login.html" class="nav-link btn-login">Login</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <button class="emergency-btn">
+                    <i class="fas fa-phone"></i> CALL 911
+                </button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Emergency Alert Banner -->
+    <div class="emergency-banner">
+        <div class="container">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>EMERGENCY? Call 911 Immediately or visit our Emergency Room - Open 24/7</span>
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+    </div>
+
+    <section class="page-header emergency-header">
+        <div class="container">
+            <h1 data-aos="fade-up"><i class="fas fa-ambulance"></i> Emergency Services</h1>
+            <p data-aos="fade-up" data-aos-delay="200">24/7 Immediate Care When You Need It Most</p>
+        </div>
+    </section>
+
+    <section class="emergency-content section-padding">
+        <div class="container">
+            <!-- Emergency Quick Actions -->
+            <div class="emergency-actions" data-aos="fade-up">
+                <a href="tel:911" class="emergency-action-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call 911</h3>
+                    <p>For life-threatening emergencies</p>
+                </a>
+                <div class="emergency-action-card" onclick="window.location.href='appointments.html'">
+                    <i class="fas fa-calendar-plus"></i>
+                    <h3>Urgent Care</h3>
+                    <p>Book an urgent appointment</p>
+                </div>
+                <div class="emergency-action-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Get Directions</h3>
+                    <p>Find the fastest route to our ER</p>
+                </div>
+            </div>
+            
+            <!-- Emergency Cases -->
+            <div class="mt-4" data-aos="fade-up">
+                <h2>Active Emergency Cases</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Case ID</th>
+                                <th>Patient</th>
+                                <th>Condition</th>
+                                <th>Severity</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Doctor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="emergencyTableBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Emergency Information -->
+            <div class="emergency-info mt-4" data-aos="fade-up">
+                <div class="info-grid">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-clock"></i> When to Visit ER</h3>
+                        <ul>
+                            <li>Chest pain or difficulty breathing</li>
+                            <li>Severe bleeding or head injury</li>
+                            <li>Sudden numbness or weakness</li>
+                            <li>Loss of consciousness</li>
+                            <li>Severe burns or fractures</li>
+                            <li>Poisoning or overdose</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card">
+                        <h3><i class="fas fa-info-circle"></i> What to Bring</h3>
+                        <ul>
+                            <li>Insurance card and ID</li>
+                            <li>List of current medications</li>
+                            <li>Medical history records</li>
+                            <li>Emergency contact information</li>
+                            <li>Any relevant test results</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card">
+                        <h3><i class="fas fa-phone-volume"></i> Emergency Contacts</h3>
+                        <ul>
+                            <li><strong>Emergency:</strong> 911</li>
+                            <li><strong>ER Direct:</strong> (555) 999-8888</li>
+                            <li><strong>Ambulance:</strong> (555) 999-7777</li>
+                            <li><strong>Poison Control:</strong> 1-800-222-1222</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Emergency Alert Form -->
+            <div class="emergency-alert mt-4" data-aos="fade-up">
+                <div class="glass-card emergency-alert-card">
+                    <h3><i class="fas fa-bell"></i> Report an Emergency</h3>
+                    <p>For non-life-threatening situations, submit an emergency alert and we'll respond quickly.</p>
+                    <form id="emergencyAlertForm">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Describe the emergency and location..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-emergency">
+                            <i class="fas fa-paper-plane"></i> Send Alert
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-hospital-alt"></i> SmartHospital</h3>
+                    <p>Advanced healthcare with compassion since 2010.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="appointments.html">Book Appointment</a></li>
+                        <li><a href="doctors.html">Find a Doctor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Emergency Contacts</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency: 911</li>
+                        <li><i class="fas fa-phone-alt"></i> ER: (555) 999-8888</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartHospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Render emergency cases
+        function renderEmergencyCases() {
+            const tbody = document.getElementById('emergencyTableBody');
+            if (!tbody || !window.HospitalData) return;
+            
+            tbody.innerHTML = HospitalData.emergencies.map(em => `
+                <tr>
+                    <td><strong>${em.id}</strong></td>
+                    <td>${em.patientName}</td>
+                    <td>${em.condition}</td>
+                    <td><span class="severity-badge severity-${em.severity.toLowerCase()}">${em.severity}</span></td>
+                    <td>${em.time}</td>
+                    <td><span class="appointment-status status-pending">${em.status}</span></td>
+                    <td>${em.doctor}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // Emergency alert submission
+        document.getElementById('emergencyAlertForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = this.querySelector('textarea').value.trim();
+            if (message) {
+                SmartHospital.showNotification('Emergency alert sent! Help is on the way.', 'warning');
+                this.reset();
+            }
+        });
+        
+        // Initial render
+        renderEmergencyCases();
+    </script>
+    
+    <style>
+        .emergency-banner {
+            background: var(--emergency-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 70px;
+            animation: pulse-bg 2s infinite;
+        }
+        @keyframes pulse-bg {
+            0%, 100% { background-color: #e53935; }
+            50% { background-color: #c62828; }
+        }
+        .emergency-banner i {
+            margin: 0 10px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .emergency-header {
+            background: linear-gradient(135deg, #b71c1c, #e53935);
+        }
+        .emergency-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .emergency-action-card {
+            background: var(--bg-primary);
+            border: 2px solid var(--emergency-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+        }
+        .emergency-action-card:hover {
+            background: var(--emergency-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        .emergency-action-card i {
+            font-size: 3rem;
+            color: var(--emergency-color);
+            margin-bottom: 1rem;
+        }
+        .emergency-action-card:hover i {
+            color: white;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .info-grid .glass-card {
+            padding: 1.5rem;
+        }
+        .info-grid ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .info-grid ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+        .emergency-alert-card {
+            border: 2px solid var(--emergency-color);
+            padding: 2rem;
+        }
+        .severity-badge {
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .severity-critical {
+            background: #e53935;
+            color: white;
+        }
+    </style>
+</body>
+</html>
